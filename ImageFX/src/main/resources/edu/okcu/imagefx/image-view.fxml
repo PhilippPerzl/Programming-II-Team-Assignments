@@ -18,4 +18,5 @@
     </HBox>
     <Button text="Load" onAction="#onLoadButtonClick"/>
     <Button text="Convert to Grayscale" onAction="#onConvertGrayScaleClick"/>
+    <Button text="Convert to Carsons Filter" onAction="#onConvertCarsonsFilterClick"/>
 </VBox>

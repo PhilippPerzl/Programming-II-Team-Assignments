@@ -10,6 +10,7 @@ import javafx.stage.FileChooser;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import edu.okcu.imagefx.filters.CarsonsFilter;
 
 public class ImageFXController {
     @FXML
@@ -35,6 +36,13 @@ public class ImageFXController {
         GrayScaleFilter grayScaleFilter = new GrayScaleFilter();
 
         Image newImage = grayScaleFilter.apply(file);
+
+        imgPhotoEditied.setImage(newImage);
+    }
+    public void onConvertCarsonsFilterClick(ActionEvent actionEvent) throws IOException {
+        CarsonsFilter carsonsFilter = new CarsonsFilter();
+
+        Image newImage = carsonsFilter.apply(file);
 
         imgPhotoEditied.setImage(newImage);
     }
