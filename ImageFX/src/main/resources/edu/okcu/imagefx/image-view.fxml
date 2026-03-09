@@ -21,4 +21,6 @@
     <Button text="Convert to Carsons Filter" onAction="#onConvertCarsonsFilterClick"/>
     <Button text="Convert to Sepia" onAction="#onConvertSepiaClick"/>
     <Button text="Convert to Philipp Filter" onAction="#onConvertPhilippFilterClick"/>
+    <Button text="Convert to Omels Filter" onAction="#onConvertOmelsFilterClick"/>
+
 </VBox>

@@ -1,18 +1,14 @@
 package edu.okcu.imagefx;
 
-import edu.okcu.imagefx.filters.GrayScaleFilter;
+import edu.okcu.imagefx.filters.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import edu.okcu.imagefx.filters.CarsonsFilter;
-import edu.okcu.imagefx.filters.SepiaFilter;
-import edu.okcu.imagefx.filters.PhilippFilter;
 
 public class ImageFXController {
     @FXML
@@ -61,6 +57,14 @@ public class ImageFXController {
         PhilippFilter philippFilter = new PhilippFilter();
 
         Image newImage = philippFilter.apply(file);
+
+        imgPhotoEditied.setImage(newImage);
+    }
+
+    public void onConvertOmelsFilterClick(ActionEvent actionEvent) throws IOException {
+        OmelsFilter omelsFilter = new OmelsFilter();
+
+        Image newImage = omelsFilter.apply(file);
 
         imgPhotoEditied.setImage(newImage);
     }
