@@ -11,6 +11,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import edu.okcu.imagefx.filters.CarsonsFilter;
+import edu.okcu.imagefx.filters.SepiaFilter;
+import edu.okcu.imagefx.filters.PhilippFilter;
 
 public class ImageFXController {
     @FXML
@@ -43,6 +45,22 @@ public class ImageFXController {
         CarsonsFilter carsonsFilter = new CarsonsFilter();
 
         Image newImage = carsonsFilter.apply(file);
+
+        imgPhotoEditied.setImage(newImage);
+    }
+
+    public void onConvertSepiaClick(ActionEvent actionEvent) throws IOException {
+        SepiaFilter sepiaFilter = new SepiaFilter();
+
+        Image newImage = sepiaFilter.apply(file);
+
+        imgPhotoEditied.setImage(newImage);
+    }
+
+    public void onConvertPhilippFilterClick(ActionEvent actionEvent) throws IOException {
+        PhilippFilter philippFilter = new PhilippFilter();
+
+        Image newImage = philippFilter.apply(file);
 
         imgPhotoEditied.setImage(newImage);
     }

@@ -9,9 +9,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class GrayScaleFilter implements IFilter {
+public class PhilippFilter implements IFilter {
     @Override
     public Image apply(File file) throws IOException {
+
         BufferedImage img = ImageIO.read(file);
 
         for (int x = 0; x < img.getWidth(); x++) {
@@ -25,18 +26,16 @@ public class GrayScaleFilter implements IFilter {
                 int green = color.getGreen();
                 int blue = color.getBlue();
 
-                // Change to Gray Scale
-                int newColor = (red + blue + green) / 3;
+                // Philipp Filter (=Negative Filter meaning it basically just inverts colors. For example black becomes white and white becomes black)
+                int newRed = 255 - red;
+                int newGreen = 255 - green;
+                int newBlue = 255 - blue;
 
-
-
-                // Create an Integer for the new values
-                int newPixel = (alpha<<24) | (newColor<<16) | (newColor<<8) | newColor;
+                int newPixel = (alpha << 24) | (newRed << 16) | (newGreen << 8) | newBlue;
                 img.setRGB(x, y, newPixel);
             }
         }
-        Image image = ImageUtil.convertBufferedImageToFXImage(img);
 
-        return image;
+        return ImageUtil.convertBufferedImageToFXImage(img);
     }
 }

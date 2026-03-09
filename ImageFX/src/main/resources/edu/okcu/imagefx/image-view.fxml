@@ -19,4 +19,6 @@
     <Button text="Load" onAction="#onLoadButtonClick"/>
     <Button text="Convert to Grayscale" onAction="#onConvertGrayScaleClick"/>
     <Button text="Convert to Carsons Filter" onAction="#onConvertCarsonsFilterClick"/>
+    <Button text="Convert to Sepia" onAction="#onConvertSepiaClick"/>
+    <Button text="Convert to Philipp Filter" onAction="#onConvertPhilippFilterClick"/>
 </VBox>

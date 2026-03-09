@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class GrayScaleFilter implements IFilter {
+public class SepiaFilter implements IFilter {
     @Override
     public Image apply(File file) throws IOException {
         BufferedImage img = ImageIO.read(file);
@@ -25,18 +25,20 @@ public class GrayScaleFilter implements IFilter {
                 int green = color.getGreen();
                 int blue = color.getBlue();
 
-                // Change to Gray Scale
-                int newColor = (red + blue + green) / 3;
+                // Sepia Filter
+                int newRed = (int)((red * 0.393) + (green * 0.769) + (blue * 0.189));
+                int newGreen = (int)((red * 0.349) + (green * 0.686) + (blue * 0.168));
+                int newBlue = (int)((red * 0.272) + (green * 0.534) + (blue * 0.131));
 
+                newRed = Math.min(255, newRed);
+                newGreen = Math.min(255, newGreen);
+                newBlue = Math.min(255, newBlue);
 
-
-                // Create an Integer for the new values
-                int newPixel = (alpha<<24) | (newColor<<16) | (newColor<<8) | newColor;
+                int newPixel = (alpha << 24) | (newRed << 16) | (newGreen << 8) | newBlue;
                 img.setRGB(x, y, newPixel);
             }
         }
-        Image image = ImageUtil.convertBufferedImageToFXImage(img);
 
-        return image;
+        return ImageUtil.convertBufferedImageToFXImage(img);
     }
 }
